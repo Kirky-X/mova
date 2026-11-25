@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- License changed to Apache License 2.0 with Commons Clause.
+- Commercial use now requires separate written authorization from the Licensor.
+
 ## [0.0.0] - 2026-11-26
 
 ### Added

@@ -2,7 +2,7 @@ English | [中文](README_CN.md)
 
 <div align="center">
 
-[![CI](https://img.shields.io/github/actions/workflow/status/Kirky-X/mova/ci.yml?branch=main&label=CI&style=for-the-badge)](https://github.com/Kirky-X/mova/actions/workflows/ci.yml) [![Release](https://img.shields.io/github/v/release/Kirky-X/mova?style=for-the-badge)](https://github.com/Kirky-X/mova/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE) [![Rust 1.97.1+](https://img.shields.io/badge/Rust-1.97.1%2B-edded?logo=rust&style=for-the-badge)](https://www.rust-lang.org/) [![Coverage](https://img.shields.io/codecov/c/github/Kirky-X/mova?style=for-the-badge)](https://codecov.io/gh/Kirky-X/mova)
+[![CI](https://img.shields.io/github/actions/workflow/status/Kirky-X/mova/ci.yml?branch=main&label=CI&style=for-the-badge)](https://github.com/Kirky-X/mova/actions/workflows/ci.yml) [![Release](https://img.shields.io/github/v/release/Kirky-X/mova?style=for-the-badge)](https://github.com/Kirky-X/mova/releases) [![License: Apache-2.0 + Commons Clause](https://img.shields.io/badge/License-Apache--2.0%20%2B%20Commons%20Clause-orange.svg?style=for-the-badge)](LICENSE) [![Rust 1.97.1+](https://img.shields.io/badge/Rust-1.97.1%2B-edded?logo=rust&style=for-the-badge)](https://www.rust-lang.org/) [![Coverage](https://img.shields.io/codecov/c/github/Kirky-X/mova?style=for-the-badge)](https://codecov.io/gh/Kirky-X/mova)
 
 **A fast, reproducible software lifecycle manager**
 
@@ -116,7 +116,9 @@ The lifecycle CLI will be added after the bootstrap release.
 
 ## 📄 License
 
-Released under the [MIT](LICENSE) license.
+Released under the [Apache License 2.0 with Commons Clause](LICENSE) license condition.
+
+Commercial use requires separate written authorization from the Licensor.
 
 Copyright (c) 2026 Kirky.X🌠
 

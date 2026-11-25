@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![CI](https://img.shields.io/github/actions/workflow/status/Kirky-X/mova/ci.yml?branch=main&label=CI&style=for-the-badge)](https://github.com/Kirky-X/mova/actions/workflows/ci.yml) [![Release](https://img.shields.io/github/v/release/Kirky-X/mova?style=for-the-badge)](https://github.com/Kirky-X/mova/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE) [![Rust 1.97.1+](https://img.shields.io/badge/Rust-1.97.1%2B-edded?logo=rust&style=for-the-badge)](https://www.rust-lang.org/) [![Coverage](https://img.shields.io/codecov/c/github/Kirky-X/mova?style=for-the-badge)](https://codecov.io/gh/Kirky-X/mova)
+[![CI](https://img.shields.io/github/actions/workflow/status/Kirky-X/mova/ci.yml?branch=main&label=CI&style=for-the-badge)](https://github.com/Kirky-X/mova/actions/workflows/ci.yml) [![Release](https://img.shields.io/github/v/release/Kirky-X/mova?style=for-the-badge)](https://github.com/Kirky-X/mova/releases) [![License: Apache-2.0 + Commons Clause](https://img.shields.io/badge/License-Apache--2.0%20%2B%20Commons%20Clause-orange.svg?style=for-the-badge)](LICENSE) [![Rust 1.97.1+](https://img.shields.io/badge/Rust-1.97.1%2B-edded?logo=rust&style=for-the-badge)](https://www.rust-lang.org/) [![Coverage](https://img.shields.io/codecov/c/github/Kirky-X/mova?style=for-the-badge)](https://codecov.io/gh/Kirky-X/mova)
 
 **快速、可靠、可复现的软件生命周期管理器**
 
@@ -116,7 +116,9 @@ mova --help
 
 ## 📄 许可证
 
-本项目使用 [MIT](LICENSE) 许可证。
+本项目使用 [Apache License 2.0 with Commons Clause](LICENSE) 许可条件。
+
+商业使用需要获得许可方的单独书面授权。
 
 Copyright (c) 2026 Kirky.X🌠
 
