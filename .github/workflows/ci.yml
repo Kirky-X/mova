@@ -1,0 +1,79 @@
+# Rust CI 质量门禁：fmt / clippy / test / coverage(全局+diff) / audit / deny
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: "-D warnings"
+
+jobs:
+  quality:
+    name: fmt + clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: swatinem/rust-cache@v2
+      - run: cargo fmt --all --check
+      - run: cargo clippy --all-targets --all-features
+
+  test:
+    name: test + coverage (global ≥ + diff ≥)
+    runs-on: ubuntu-latest
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    steps:
+      # fetch-depth: 0 供 diff-cover 对比基线分支计算变更行覆盖率。
+      # 代价：全历史 checkout，超大仓库可达分钟级；fork PR 会把全量历史拉进 runner——
+      # 历史若误提交过敏感文件请先清洗（或改用仅取基线分支的浅 fetch 定制）。
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: swatinem/rust-cache@v2
+      - uses: taiki-e/install-action@cargo-llvm-cov
+      - run: cargo test --all-features --no-fail-fast
+      - name: Coverage global (fail under 85% lines)
+        run: cargo llvm-cov --all-features --fail-under-lines 85 --lcov --output-path lcov.info
+      # diff coverage：只对相对基线分支新增/修改的行设阈值——新代码 0 覆盖也能拉高全局覆盖率的盲区由这层堵住
+      # （SKILL.md 核心原则 4 + references/coverage-standards.md「diff coverage」段的落地）
+      # uvx 跑 diff-cover（setup-uv 自带缓存，避免 pipx 每次 CI 冷安装）
+      - uses: astral-sh/setup-uv@v4
+      - name: Diff coverage (changed lines ≥ 85%)
+        env:
+          # env 间接传递：${{ }} 直接插值进 run: 是 Actions 脚本注入面（分支名可含 shell 元字符）
+          BASE_BRANCH: ${{ github.base_ref || 'main' }}
+        run: |
+          uvx diff-cover lcov.info --fail-under 85 \
+            --compare-branch "origin/${BASE_BRANCH}"
+      - name: Upload to Codecov (可选)
+        if: ${{ env.CODECOV_TOKEN != '' }}
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./lcov.info
+          fail_ci_if_error: false
+
+  security:
+    name: cargo-audit + cargo-deny
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: cargo-audit (RustSec 漏洞库)
+        uses: rustsec/audit-check@v2.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: cargo-deny (license / ban / advisory)
+        uses: EmbarkStudios/cargo-deny-action@v2
