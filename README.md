@@ -101,9 +101,9 @@ The lifecycle CLI will be added after the bootstrap release.
 
 ## 📚 Documentation
 
-| Document                     | Notes         |
-| ---------------------------- | ------------- |
-| [📋 Changelog](CHANGELOG.md) | Release notes |
+| Document                          | Notes         |
+| --------------------------------- | ------------- |
+| [📋 Changelog](docs/CHANGELOG.md) | Release notes |
 
 ---
 

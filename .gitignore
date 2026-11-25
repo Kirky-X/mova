@@ -3,10 +3,9 @@
 /AGENTS.md
 /.zcode/
 /.ruff_cache/
-/docs/
-/docs/PRD.md
-/docs/TDD.md
-/docs/REPORT_TEMPLATE.md
+/docs/*
+!/docs/CHANGELOG.md
+lcov.info
 *.log
 .env
 .DS_Store
